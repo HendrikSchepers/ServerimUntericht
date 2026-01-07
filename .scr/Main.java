@@ -14,6 +14,6 @@ public class Main {
 
          QOTDClient qotdClient=new QOTDClient("djxmmx.net" );
 
-         echosever echosever= new echosever()
+
     }
 }
