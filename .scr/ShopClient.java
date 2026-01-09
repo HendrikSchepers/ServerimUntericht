@@ -3,11 +3,12 @@ import jutils.Client;
 public class ShopClient extends Client {
     public ShopClient(String pServerIP, int pSeverPort) {
         super(pServerIP, pSeverPort);
+        System.out.println("verbindung wird aufgebaut");
     }
 
     @Override
     public void processMessage(String pMessage) {
-
+        System.out.println(pMessage);
     }
 
     public void groesseFarbeWaehlen(String pGroesse, String pFarbe){

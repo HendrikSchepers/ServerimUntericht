@@ -4,8 +4,8 @@ import jutils.Server;
 public class ShopSever extends Server {
 
     List<Bestellung> bestellungen= new List<>();
-    public ShopSever() {
-        super(16);
+    public ShopSever(int pIP) {
+        super(pIP);
     }
 
     @Override
@@ -22,13 +22,21 @@ public class ShopSever extends Server {
 
             }
             else if (nachrichtTeil[0].equals("BESTAETIGUNG")){
-                if (nachrichtTeil[1].equals())
+                if (nachrichtTeil[1].equals("Ja")){
+                    send(pClientIP,pClientPort,"Danke für dein Einkauf. Auf Wiedersehen");
+                }else if (nachrichtTeil[1].equals("Nein")){
+                    send(pClientIP,pClientPort,"Auf Wiedersehen");
+                }else{
+                    send(pClientIP,pClientPort,"Bitte gebe nu Ja oder Nein ein");
+                }
 
+            }else{
+                send(pClientIP,pClientPort,"Bitte nutzte eine gültige Eingabe");
             }
     }
 
     @Override
     public void processClosingConnection(String pClientIP, int pClientPort) {
-
+        send(pClientIP,pClientPort,"Auf Wiedersehen");
     }
 }
