@@ -1,6 +1,13 @@
 import jutils.List;
 import jutils.Server;
-
+/**
+ * Protokoll:
+ * ANMELDUNG
+ * TSHIRT:<groesse>:<Farbe>
+ * BESTAETIGUNG:<Wahl>
+ * ABMELDEN
+ * TRINKGELD:<Menge>
+ */
 public class ShopSever extends Server {
 
     List<Bestellung> bestellungen= new List<>();
@@ -10,7 +17,7 @@ public class ShopSever extends Server {
 
     @Override
     public void processNewConnection(String pClientIP, int pClientPort) {
-            send(pClientIP,pClientPort,"Willkommen bei He&He");
+            send(pClientIP,pClientPort,"Willkommen bei He&He \n -----------------------------");
     }
 
     @Override
@@ -30,7 +37,13 @@ public class ShopSever extends Server {
                     send(pClientIP,pClientPort,"Bitte gebe nu Ja oder Nein ein");
                 }
 
-            }else{
+            }else if(nachrichtTeil[0].equals("ABMELDEN")){
+                this.closeConnection(pClientIP,pClientPort);
+            }else if(nachrichtTeil[0].equals("TRINKGELD")){
+                send(pClientIP,pClientPort,"Danke für dein Trinkgeld in der höhe von "+nachrichtTeil[1] );
+        }else
+
+            {
                 send(pClientIP,pClientPort,"Bitte nutzte eine gültige Eingabe");
             }
     }

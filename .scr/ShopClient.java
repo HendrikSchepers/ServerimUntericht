@@ -1,6 +1,19 @@
 import jutils.Client;
 
+import java.sql.Time;
+import java.util.concurrent.TimeUnit;
+
+
+/**
+ * Protokoll:
+ * ANMELDUNG
+ * TSHIRT:<groesse>:<Farbe>
+ * BESTAETIGUNG:<Wahl>
+ * ABMELDEN
+ * TRINKGELD:<Menge>
+ */
 public class ShopClient extends Client {
+
     public ShopClient(String pServerIP, int pSeverPort) {
         super(pServerIP, pSeverPort);
         System.out.println("verbindung wird aufgebaut");
@@ -17,8 +30,12 @@ public class ShopClient extends Client {
     public void bestaetigen(String pAntwort){
         send("BESTAETIGUNG:"+pAntwort);
     }
+    public void trinkgeldgeben(String pWert){
+        send("TRINKGELD:"+pWert);
+    }
 
     public void abmelden(){
         send("ABMELDEN");
     }
+
 }
