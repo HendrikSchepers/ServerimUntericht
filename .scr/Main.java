@@ -33,7 +33,9 @@ public class Main {
                  int antwort = scanner.nextInt();
                  if (antwort==1){
                      System.out.println("Das objekt wurde in den Warenkorb hinzugefügt");
-                 anzahl ++;}
+                     System.out.println("Wie viele Tshirts sollen in den warenkorb?");
+                     int b = scanner.nextInt();
+                 anzahl = anzahl + b;}
 
 
              }else if( auswahl==2){
