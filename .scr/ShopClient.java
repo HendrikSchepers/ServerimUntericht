@@ -30,7 +30,7 @@ public class ShopClient extends Client {
     public void bestaetigen(String pAntwort){
         send("BESTAETIGUNG:"+pAntwort);
     }
-    public void trinkgeldgeben(String pWert){
+    public void trinkgeldgeben(int pWert){
         send("TRINKGELD:"+pWert);
     }
 

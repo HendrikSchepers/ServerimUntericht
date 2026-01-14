@@ -12,7 +12,8 @@ public class Main {
          //wichti ist, das der sever und der Client denselben Port nutzten
          ShopSever sever =new ShopSever(16);
          ShopClient kunde = new ShopClient("localhost",16);
-
+          int bezahlen =0;
+          int anzahl = 0;
          Thread.sleep(45);
 
          while(kunde.isConnected()) {
@@ -27,16 +28,27 @@ public class Main {
                  System.out.println("Welche Farbe soll das TShirt haben? ");
                  farbe=scanner.next();
                  kunde.groesseFarbeWaehlen(groessse,farbe);
+                 System.out.println("[1] für in den warenkorb packen ");
+                 System.out.println("[2] für löschen ");
+                 int antwort = scanner.nextInt();
+                 if (antwort==1){
+                     System.out.println("Das objekt wurde in den Warenkorb hinzugefügt");
+                 anzahl ++;}
+
 
              }else if( auswahl==2){
                  System.out.println("Ja oder Nein");
                  String antwort= scanner.next();
+                 bezahlen = bezahlen + anzahl* 30;
+                 System.out.println("Sie müssen "+ bezahlen+ "€ bezahlen");
+
                  kunde.bestaetigen(antwort);
              }
 
              else if (auswahl == 3){
                  System.out.println("Wie viel Trinkgeld möchtest du geben?");
-                 String wert = scanner.next();
+                 int wert = scanner.nextInt();
+                 bezahlen = wert;
                  kunde.trinkgeldgeben(wert);
              }
              else if (auswahl == 4){

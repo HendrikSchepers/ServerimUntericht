@@ -25,7 +25,7 @@ public class ShopSever extends Server {
             String[] nachrichtTeil =pMessage.split(":");
             if(nachrichtTeil[0].equals("TSHIRT")){
                 bestellungen.append(new Bestellung(new TShirt(nachrichtTeil[1],nachrichtTeil[2],30.27)));
-                send(pClientIP,pClientPort,"Du möchtest ein TShirt in der Größe "+nachrichtTeil[1]+" und der Farbe "+ nachrichtTeil[2]+" . Dieser Artikkel kostet Nur 30,27 Euro");
+                send(pClientIP,pClientPort,"Du möchtest ein TShirt in der Größe "+nachrichtTeil[1]+" und der Farbe "+ nachrichtTeil[2]+" . Dieser Artikel kostet Nur 30 Euro");
 
             }
             else if (nachrichtTeil[0].equals("BESTAETIGUNG")){
