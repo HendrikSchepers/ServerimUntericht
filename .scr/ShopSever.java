@@ -34,6 +34,10 @@ public class ShopSever extends Server {
                     bestellungen.append(new Bestellung(new TShirt(nachrichtTeil[1], nachrichtTeil[2], 30)));
                 }
             } else if (nachrichtTeil[0].equals("BESTAETIGUNG")) {
+              //  String [] Bestellt;
+             //   bestellungen.toFirst();
+              //  while (bestellungen.hasAccess())
+             //   send(pClientIP, pClientPort, )
                 if (nachrichtTeil[1].equals("Ja")) {
                     send(pClientIP, pClientPort, "Danke für dein Einkauf. Auf Wiedersehen");
                 } else if (nachrichtTeil[1].equals("Nein")) {
@@ -50,10 +54,7 @@ public class ShopSever extends Server {
                 send(pClientIP, pClientPort, "Bitte nutzte eine gültige Eingabe");
             }
     }
-    public void anfuegen (String pMessage){
-        String[] nachrichtTeil =pMessage.split(":");
-        bestellungen.append(new Bestellung(new TShirt(nachrichtTeil[1],nachrichtTeil[2],30)));
-    }
+
 
     @Override
     public void processClosingConnection(String pClientIP, int pClientPort) {
