@@ -32,9 +32,10 @@ public class Main {
                  System.out.println("[2] für löschen ");
                  int antwort = scanner.nextInt();
                  if (antwort==1){
-                     System.out.println("Das objekt wurde in den Warenkorb hinzugefügt");
+
                      System.out.println("Wie viele Tshirts sollen in den warenkorb?");
                      int b = scanner.nextInt();
+                     System.out.println("Das objekt wurde " + b +" mal in den Warenkorb hinzugefügt");
                  anzahl = anzahl + b;}
 
 

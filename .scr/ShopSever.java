@@ -24,28 +24,35 @@ public class ShopSever extends Server {
     public void processMessage(String pClientIP, int pClientPort, String pMessage) {
             String[] nachrichtTeil =pMessage.split(":");
             if(nachrichtTeil[0].equals("TSHIRT")){
-                bestellungen.append(new Bestellung(new TShirt(nachrichtTeil[1],nachrichtTeil[2],30.27)));
+
                 send(pClientIP,pClientPort,"Du möchtest ein TShirt in der Größe "+nachrichtTeil[1]+" und der Farbe "+ nachrichtTeil[2]+" . Dieser Artikel kostet Nur 30 Euro");
 
-            }
-            else if (nachrichtTeil[0].equals("BESTAETIGUNG")){
-                if (nachrichtTeil[1].equals("Ja")){
-                    send(pClientIP,pClientPort,"Danke für dein Einkauf. Auf Wiedersehen");
-                }else if (nachrichtTeil[1].equals("Nein")){
-                    send(pClientIP,pClientPort,"Auf Wiedersehen");
-                }else{
-                    send(pClientIP,pClientPort,"Bitte gebe nu Ja oder Nein ein");
+            } else if (nachrichtTeil[0].equals("Warenkorb")) {
+                int x = 0;
+                while (Integer.parseInt(nachrichtTeil[3])< x) {
+                    x++;
+                    bestellungen.append(new Bestellung(new TShirt(nachrichtTeil[1], nachrichtTeil[2], 30)));
+                }
+            } else if (nachrichtTeil[0].equals("BESTAETIGUNG")) {
+                if (nachrichtTeil[1].equals("Ja")) {
+                    send(pClientIP, pClientPort, "Danke für dein Einkauf. Auf Wiedersehen");
+                } else if (nachrichtTeil[1].equals("Nein")) {
+                    send(pClientIP, pClientPort, "Auf Wiedersehen");
+                } else {
+                    send(pClientIP, pClientPort, "Bitte gebe nu Ja oder Nein ein");
                 }
 
-            }else if(nachrichtTeil[0].equals("ABMELDEN")){
-                this.closeConnection(pClientIP,pClientPort);
-            }else if(nachrichtTeil[0].equals("TRINKGELD")){
-                send(pClientIP,pClientPort,"Danke für dein Trinkgeld in der höhe von "+nachrichtTeil[1] );
-        }else
-
-            {
-                send(pClientIP,pClientPort,"Bitte nutzte eine gültige Eingabe");
+            } else if (nachrichtTeil[0].equals("ABMELDEN")) {
+                this.closeConnection(pClientIP, pClientPort);
+            } else if (nachrichtTeil[0].equals("TRINKGELD")) {
+                send(pClientIP, pClientPort, "Danke für dein Trinkgeld in der höhe von " + nachrichtTeil[1]);
+            } else {
+                send(pClientIP, pClientPort, "Bitte nutzte eine gültige Eingabe");
             }
+    }
+    public void anfuegen (String pMessage){
+        String[] nachrichtTeil =pMessage.split(":");
+        bestellungen.append(new Bestellung(new TShirt(nachrichtTeil[1],nachrichtTeil[2],30)));
     }
 
     @Override

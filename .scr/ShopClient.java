@@ -27,6 +27,9 @@ public class ShopClient extends Client {
     public void groesseFarbeWaehlen(String pGroesse, String pFarbe){
       send("TSHIRT:"+pGroesse+":"+pFarbe);
     }
+    public void Warenkorb(String pGroesse, String pFarbe, int Anzahl){
+        send("Warenkorb:" + pGroesse + ":" + pFarbe + ":" + Anzahl);
+    }
     public void bestaetigen(String pAntwort){
         send("BESTAETIGUNG:"+pAntwort);
     }
