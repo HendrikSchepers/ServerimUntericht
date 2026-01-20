@@ -29,6 +29,7 @@ public class ShopClient extends Client {
     }
     public void Warenkorb(String pGroesse, String pFarbe, int Anzahl){
         send("Warenkorb:" + pGroesse + ":" + pFarbe + ":" + Anzahl);
+        System.out.println("ww");
     }
     public void bestaetigen(String pAntwort){
         send("BESTAETIGUNG:"+pAntwort);

@@ -27,11 +27,13 @@ public class ShopSever extends Server {
 
                 send(pClientIP,pClientPort,"Du möchtest ein TShirt in der Größe "+nachrichtTeil[1]+" und der Farbe "+ nachrichtTeil[2]+" . Dieser Artikel kostet Nur 30 Euro");
 
-            } else if (nachrichtTeil[0].equals("Warenkorb")) {
+            }else if (nachrichtTeil[0].equals("Warenkorb")) {
+                send(pClientIP,pClientPort,"oisiisHDIUGHishouIHSGOIUhefou");
                 int x = 0;
+
                 while (Integer.parseInt(nachrichtTeil[3])< x) {
                     x++;
-                    send(pClientIP,pClientPort, "cc");
+
                     bestellungen.append(new Bestellung(new TShirt(nachrichtTeil[1], nachrichtTeil[2], 30)));
                 }
             } else if (nachrichtTeil[0].equals("BESTAETIGUNG")) {
