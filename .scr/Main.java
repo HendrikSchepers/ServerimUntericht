@@ -35,6 +35,7 @@ public class Main {
 
                      System.out.println("Wie viele Tshirts sollen in den warenkorb?");
                      int b = scanner.nextInt();
+                     kunde.Warenkorb(groessse, farbe, b);
                      System.out.println("Das objekt wurde " + b +" mal in den Warenkorb hinzugefügt");
                  anzahl = anzahl + b;}
 

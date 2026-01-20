@@ -31,14 +31,19 @@ public class ShopSever extends Server {
                 int x = 0;
                 while (Integer.parseInt(nachrichtTeil[3])< x) {
                     x++;
+                    send(pClientIP,pClientPort, "cc");
                     bestellungen.append(new Bestellung(new TShirt(nachrichtTeil[1], nachrichtTeil[2], 30)));
                 }
             } else if (nachrichtTeil[0].equals("BESTAETIGUNG")) {
-              //  String [] Bestellt;
-             //   bestellungen.toFirst();
-              //  while (bestellungen.hasAccess())
-             //   send(pClientIP, pClientPort, )
+
+
                 if (nachrichtTeil[1].equals("Ja")) {
+                    bestellungen.toFirst();
+                    while (bestellungen.hasAccess()) {
+                        send(pClientIP, pClientPort, bestellungen.getContent().getWare().getFarbe());
+                        send(pClientIP, pClientPort, bestellungen.getContent().getWare().getFarbe());
+                        bestellungen.next();
+                    }
                     send(pClientIP, pClientPort, "Danke für dein Einkauf. Auf Wiedersehen");
                 } else if (nachrichtTeil[1].equals("Nein")) {
                     send(pClientIP, pClientPort, "Auf Wiedersehen");

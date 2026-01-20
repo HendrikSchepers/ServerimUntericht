@@ -6,4 +6,8 @@ public class Bestellung {
     public Bestellung(TShirt pWahre){
         ware=pWahre;
     }
+
+    public TShirt getWare() {
+        return ware;
+    }
 }
